@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>实时数据看版</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./common/extend/layui/css/layui.css" media="all">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <script src="./common/js/jquery.js"></script>
+    <script src="./common/extend/layui/layui.js"></script>
+    <script src="./common/extend/echarts/js/echarts.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Alibaba-PuHuiTi-Regular';
+            src: url('./common/font/Alibaba-PuHuiTi-Regular.eot');
+            src: url('./common/font/Alibaba-PuHuiTi-Regular.eot?#iefix') format('embedded-opentype'),
+                url('./common/font/Alibaba-PuHuiTi-Regular.woff') format('woff'),
+                url('./common/font/Alibaba-PuHuiTi-Regular.ttf') format('truetype'),
+                url('./common/font/Alibaba-PuHuiTi-Regular.svg#pingfang') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font: 14px Helvetica Neue, Helvetica, Alibaba-PuHuiTi-Regular, Tahoma, Arial, sans-serif;
+            font-weight: 800;
+        }
+
+        .main-contain {
+            margin-top: 2em;
+        }
+
+        .header,
+        .contain {
+            text-align: center;
+            /*让文字水平居中*/
+            margin-bottom: 3em;
+        }
+
+        .grid-demo {
+            padding: 18px 20px;
+            background-color: transparent;
+            text-align: center;
+        }
+
+        .layui-btn-sm {
+            background-color: #20263f;
+        }
+
+        .layui-btn-primary {
+            border: 1px solid #20263f;
+            background-color: #20263f;
+            color: #fff;
+        }
+
+        .bottom-tips {
+            height: 60px;
+            line-height: 60px;
+            color: #fff
+        }
+
+        p,
+        h3,
+        h2,
+        h1 {
+            color: #fff
+        }
+
+        .layui-bg-gray {
+            background-color: #24375c !important;
+        }
+    </style>
+</head>
+
+<body style="background-color:#20263f">
+    <div>
+        <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+        <div class="layui-row" style="float:right;position:absolute;top:10px;right:10px;">
+            <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" id="btnSetting">
+                <i class="layui-icon layui-icon-set-sm"></i>
+            </button>
+        </div>
+        <div class="main-contain">
+
+            <div class="layui-row header">
+                <p id="title" style="font-size:4em;"><i class="layui-icon layui-anim layui-anim-rotate layui-anim-loop"
+                        style="font-size:1em;">&#xe63d;</i>加载中...</p>
+                <i class="fa fa-camera-retro fa-lg"></i>
+            </div>
+            <div class="layui-row contain" style="margin-bottom: 0px;">
+                <p id="nowDate" style="font-size: 2em;"><i
+                        class="layui-icon layui-anim layui-anim-rotate layui-anim-loop"
+                        style="font-size:1em;">&#xe63d;</i>加载中...</p>
+            </div>
+            <div class="layui-row contain" style="margin-bottom: 0px;">
+                <p style="font-size:12em;" id="Datas2"><i
+                        class="layui-icon layui-anim layui-anim-rotate layui-anim-loop"
+                        style="font-size:1em;">&#xe63d;</i>加载中...</p>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-md4">
+                    <div class="grid-demo grid-demo-bg1">
+                        <div>
+                            <div style="height:300px;background-color:transparent" id="charts_day_to_day"></div>
+                            <hr class="layui-bg-gray">
+                            <div style="height:60px;background-color:#24375c;text-align: center;">
+                                <h1 class="bottom-tips" id="date1"><i
+                                        class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>加载中...
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="grid-demo grid-demo-bg1">
+                        <div>
+                            <div style="height:300px;background-color:transparent" id="charts_week_to_week"></div>
+                            <hr class="layui-bg-gray">
+                            <div style="height:60px;background-color:#24375c;text-align: center;">
+                                <h1 class="bottom-tips" id="date2"><i
+                                        class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>加载中...
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="grid-demo grid-demo-bg1">
+                        <div>
+                            <div style="height:300px;background-color:transparent" id="charts_year_to_year"></div>
+                            <hr class="layui-bg-gray">
+                            <div style="height:60px;background-color:#24375c;text-align: center;">
+                                <h1 class="bottom-tips" id="date3"><i
+                                        class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>加载中...
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    $(document).ready(function () {
+        function timest() {
+            var tmp = Date.parse(new Date()).toString();
+            tmp = tmp.substr(0, 10);
+            return tmp;
+        }
+        function getWeekDays(date) {
+            var myddy = date.getDay();//获取存储当前日期
+            var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            return weekday[myddy];
+        }
+        function getWeek(dt) {
+            let d1 = new Date(dt);
+            let d2 = new Date(dt);
+            d2.setMonth(0);
+            d2.setDate(1);
+            let rq = d1 - d2;
+            let days = Math.ceil(rq / (24 * 60 * 60 * 1000));
+            let num = Math.ceil(days / 7);
+            return num;
+        }
+        function getNowFormatDate() {//获取当前时间 
+            var date = new Date(); var seperator1 = "-"; var seperator2 = ":"; var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1; var strDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate(); var currentdate = date.getFullYear() + "年" + month + "月" + strDate + "日 " + getWeekDays(date) + " " + date.getHours() + seperator2 + date.getMinutes() + seperator2 + date.getSeconds() + " 第" + getWeek(date) + "周"; return currentdate;
+        }
+        setInterval(function () {
+            $('#nowDate').html(getNowFormatDate());
+        }, "1000");
+
+
+        $('body').css({ "background": "#20263f" });
+        function getParams() {
+            return {
+                name: 'Default Echarts',
+                title: '',
+                baselineNumber: 100,
+                currentNumber: 100
+            }
+        }
+
+
+
+
+
+
+        function getOptions(that) {
+            var dataStyle = {
+                normal: {
+                    label: {
+                        show: false
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    shadowBlur: 0,
+                    shadowColor: '#203665'
+                }
+            };
+            return {
+                backgroundColor: "rgba(255, 255, 255, 0)",
+                series: {
+                    name: that.name,
+                    type: 'pie',
+                    clockWise: false,
+                    radius: [90, 100],
+                    itemStyle: dataStyle,
+                    hoverAnimation: false,
+                    //center: ['15%', '50%'],
+                    data: [{
+                        value: Math.abs(that.currentNumber),
+                        label: {
+                            normal: {
+                                rich: {
+                                    a: {
+                                        color: '#3a7ad5',
+                                        align: 'center',
+                                        fontSize: 20,
+                                        fontWeight: "bold"
+                                    },
+                                    b: {
+                                        color: '#fff',
+                                        align: 'center',
+                                        fontSize: 16
+                                    }
+                                },
+                                formatter: function (params) {
+                                    return "{b|" + that.title + "}\n\n" + "{a|" + that.currentNumber + "%}";
+                                },
+                                position: 'center',
+                                show: true,
+                                textStyle: {
+                                    fontSize: '14',
+                                    fontWeight: 'normal',
+                                    color: '#fff'
+                                }
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#2c6cc4',
+                                shadowColor: '#2c6cc4',
+                                shadowBlur: 0
+                            }
+                        }
+                    }, {
+                        value: that.baselineNumber,
+                        name: 'invisible',
+                        itemStyle: {
+                            normal: {
+                                color: '#24375c'
+                            },
+                            emphasis: {
+                                color: '#24375c'
+                            }
+                        }
+                    }]
+                }
+            }
+        }
+
+        //获取dom容器    
+        var myChart1 = echarts.init(document.getElementById('charts_day_to_day'));
+        // 使用刚指定的配置项和数据显示图表。
+        var thatParams1 = getParams();
+        thatParams1.name = "对比";
+        thatParams1.title = "对比";
+        thatParams1.currentNumber = -10;
+        thatParams1.baselineNumber = 100 - Math.abs(thatParams1.currentNumber);
+        myChart1.setOption(getOptions(thatParams1), true);
+        myChart1.showLoading({ text: '加载中...', textStyle: { fontSize: 30, color: '#444' }, effectOption: { backgroundColor: 'rgba(0, 0, 0, 0)' } });
+        window.addEventListener("resize", () => { myChart1.resize(); });
+
+        var myChart2 = echarts.init(document.getElementById('charts_week_to_week'));
+        // 使用刚指定的配置项和数据显示图表。
+        var thatParams2 = getParams();
+        thatParams2.name = "环比";
+        thatParams2.title = "环比";
+        thatParams2.currentNumber = 68;
+        thatParams2.baselineNumber = 100 - Math.abs(thatParams2.currentNumber);
+        myChart2.setOption(getOptions(thatParams2), true);
+        myChart2.showLoading({ text: '加载中...', textStyle: { fontSize: 30, color: '#444' }, effectOption: { backgroundColor: 'rgba(0, 0, 0, 0)' } });
+        window.addEventListener("resize", () => { myChart2.resize(); });
+        var myChart3 = echarts.init(document.getElementById('charts_year_to_year'));
+        // 使用刚指定的配置项和数据显示图表。
+        var thatParams3 = getParams();
+        thatParams3.name = "同比";
+        thatParams3.title = "同比";
+        thatParams3.currentNumber = 40.7;
+        thatParams3.baselineNumber = 100 - Math.abs(thatParams3.currentNumber);
+        myChart3.setOption(getOptions(thatParams3), true);
+        myChart3.showLoading({ text: '加载中...', textStyle: { fontSize: 30, color: '#444' }, effectOption: { backgroundColor: 'rgba(0, 0, 0, 0)' } });
+        window.addEventListener("resize", () => { myChart3.resize(); });
+
+
+        setTimeout(function () {
+            $('#title').html("实时数据看版测试版");
+            // $('body').css('background', 'url("http://localhost:51076/api/ImgUpload?imgname=' + res.currentBackground + '") cover no-repeat;');
+            $('body').attr('style', 'background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561267516402&di=d9fd0a63feb537a307ec2a3ad5bef2b4&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01a3f4589ea315a801219c77c63f72.jpg%401280w_1l_2o_100sh.jpg");background-size:cover;background-repeat:no-repeat;');
+            $('#Datas2').html("5211");
+            //获取对比数据
+            thatParams1.currentNumber = 11;//res.Datas.d;
+            thatParams1.baselineNumber = 100 - Math.abs(thatParams1.currentNumber);
+            myChart1.setOption(getOptions(thatParams1), true);
+            myChart1.hideLoading();
+            $('#date1').html("2019-06-22 10:00:00");
+            //获取环比数据
+            thatParams2.currentNumber = 23;
+            thatParams2.baselineNumber = 100 - Math.abs(thatParams2.currentNumber);
+            myChart2.setOption(getOptions(thatParams2), true);
+            myChart2.hideLoading();
+            $('#date2').html("2019-06-16 10:00:00");
+            //获取环比数据
+            thatParams3.currentNumber = 47;
+            thatParams3.baselineNumber = 100 - Math.abs(thatParams3.currentNumber);
+            myChart3.setOption(getOptions(thatParams3), true);
+            myChart3.hideLoading();
+            $('#date3').html("2018-06-03 10:00:00");
+        }, 2000);
+
+
+
+
+
+
+
+
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
+            $('#btnSetting').click(() => {
+                window.location.href = "./setting.html";
+            });
+        });
+
+
+    });
+
+
+
+
+
+</script>
+
+</html>

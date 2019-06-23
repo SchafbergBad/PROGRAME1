@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>实时数据系统设置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./common/extend/layui/css/layui.css" media="all">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <style>
+        .container {
+            margin-right: 10px;
+            margin-top: 50px;
+        }
+
+        .thisback {
+            top: 10px;
+            left: 10px;
+            position: absolute;
+        }
+
+        #toBack {
+            border: 1px solid #fff;
+            background-color: #fff;
+            color: #20263f;
+        }
+
+        .background-img {
+            width: 50px;
+            height: 50px;
+            z-index: -1
+        }
+
+        #imgList {
+            float: left;
+        }
+
+        .img-div {
+            border: 1px transparent solid;
+        }
+
+        .img-div:hover {
+            border: 1px #1296db solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-form-item thisback">
+        <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" id="toBack">
+            <i class="layui-icon layui-icon-left"></i>返回首页
+        </button>
+    </div>
+    <div class="container">
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;margin-right:10px;">
+            <legend>基础设置</legend>
+        </fieldset>
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">标题：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入标题"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">背景设置：</label>
+                <div id="imgList">
+                    <div class="img-div"
+                        style="background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561267516402&di=d9fd0a63feb537a307ec2a3ad5bef2b4&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01a3f4589ea315a801219c77c63f72.jpg%401280w_1l_2o_100sh.jpg') no-repeat right bottom; background-size: cover;margin-right: 4px;float:left;cursor:pointer;"
+                        background="BodyPart_5ace42b8-6276-4308-a090-882bd2b5f229.jpg"><img alt=""
+                            class="background-img" src="./common/img/current.png"> </div>
+                    <div class="img-div"
+                        style="background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561267516402&di=d9fd0a63feb537a307ec2a3ad5bef2b4&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01a3f4589ea315a801219c77c63f72.jpg%401280w_1l_2o_100sh.jpg') no-repeat right bottom; background-size: cover;margin-right: 4px;float:left;cursor:pointer;"
+                        background="BodyPart_652a88ae-1c23-4c0b-bfe7-a8bde1b89e4f.jpg"><img alt=""
+                            class="background-img"> </div>
+                    <div class="img-div"
+                        style="background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561267516402&di=d9fd0a63feb537a307ec2a3ad5bef2b4&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01a3f4589ea315a801219c77c63f72.jpg%401280w_1l_2o_100sh.jpg') no-repeat right bottom; background-size: cover;margin-right: 4px;float:left;cursor:pointer;"
+                        background="BodyPart_9b9347c3-a798-45e0-ab62-6ffb8f03a105.jpg"><img alt=""
+                            class="background-img"> </div>
+                    <div class="img-div"
+                        style="background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561267516402&di=d9fd0a63feb537a307ec2a3ad5bef2b4&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01a3f4589ea315a801219c77c63f72.jpg%401280w_1l_2o_100sh.jpg') no-repeat right bottom; background-size: cover;margin-right: 4px;float:left;cursor:pointer;"
+                        background="BodyPart_e5924da7-fe91-49cf-9453-06dae7c5ec4a.jpg"><img alt=""
+                            class="background-img"> </div>
+                    <div class="img-div"
+                        style="background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561267516402&di=d9fd0a63feb537a307ec2a3ad5bef2b4&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01a3f4589ea315a801219c77c63f72.jpg%401280w_1l_2o_100sh.jpg') no-repeat right bottom; background-size: cover;margin-right: 4px;float:left;cursor:pointer;"
+                        background="BodyPart_fbd32f18-47ef-43fa-82d4-edded86eecc8.jpg"><img alt=""
+                            class="background-img"> </div>
+                </div>
+
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn" id="test1">上传新的</button>
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;margin-right:10px;">
+                <legend>数据库设置</legend>
+            </fieldset>
+            <div class="layui-form-item">
+                <label class="layui-form-label">IP地址：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="dbaddress" lay-verify="required" autocomplete="off" placeholder="请输入标题"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="dbname" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入"
+                        autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？"
+                        placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码：</label>
+                <div class="layui-input-block">
+                    <input type="password" name="password" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？"
+                        placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" id="AdvancedSetting" class="layui-btn" lay-submit=""
+                        lay-filter="AdvancedSetting">立即提交</button>
+                    <button type="button" type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+<script src="./common/js/jquery.js"></script>
+<script src="./common/extend/layui/layui.js"></script>
+<script src="./common/extend/echarts/js/echarts.min.js"></script>
+<script>
+    function timest() {
+        var tmp = Date.parse(new Date()).toString();
+        tmp = tmp.substr(0, 10);
+        return tmp;
+    }
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:51076/api/ImgUpload",
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",//数据类型为jsonp 
+        async: false,
+        success: function (res) {
+            res.forEach(function (item, index) {
+                $('#imgList').append('<div class="img-div" style="background: url(\'http://localhost:51076/api/ImgUpload?imgname=' + item.imgname + '\') no-repeat right bottom; background-size: cover;margin-right: 4px;float:left;cursor:pointer;" background="' + item.imgname
+                    + '"><img alt="" class="background-img"> </div>'); //图片链接（base64）                
+            });
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:51076/api/Setting",
+                contentType: 'application/json; charset=utf-8',
+                data: { "timeStamp": timest() },
+                dataType: "json",//数据类型为jsonp 
+                async: true,
+                success: function (ress) {
+                    $('input[name="dbaddress"]').val(ress.dbaddress);
+                    $('input[name="dbname"]').val(ress.dbname);
+                    $('input[name="username"]').val(ress.username);
+                    $('input[name="password"]').val(ress.password);
+                    $('input[name="title"]').val(ress.title);
+                    //获取并设置当前背景图片
+                    $('div[background="' + ress.currentBackground + '"]').children().filter('img').attr("src", "./common/img/current.png")
+                    //绑定class=img-div的click事件
+                    $('.img-div').click(function () {
+                        $('.img-div').children().filter('img').removeAttr("src");
+                        $('.img-div').removeAttr("currentBackground");
+                        $(this).children().filter('img').attr("src", "./common/img/current.png");
+                        $(this).attr("currentBackground", ress.imgname);
+                    });
+                },
+                error: function (err) {
+                    console.log('error');
+                }
+            });
+        },
+        error: function (err) {
+            console.log('error');
+        }
+    });
+    function submit(data) {
+        data.currentBackground = $('.img-div').children().filter(function () {
+            return $(this).attr('src');
+        }).parent().attr('background');
+        data.timeStamp = timest();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:51076/api/Setting",
+            contentType: 'application/json; charset=utf-8',
+            data: { "values": JSON.stringify(data) },
+            dataType: "json",//数据类型为jsonp 
+            async: true,
+            success: function (res) {
+                alert('修改成功！');
+                $('#toBack').click();
+            },
+            error: function (err) {
+                console.log('error');
+            }
+        });
+    }
+
+    layui.use(['form', 'layer', 'upload', 'jquery'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , upload = layui.upload
+            , $ = layui.jquery;
+        //多图片上传
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            , url: 'http://localhost:51076/api/ImgUpload'
+            , size: 2048 //最大允许上传的文件大小2
+            , multiple: false
+            , before: function (obj) {
+                console.log(obj);
+
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code == "0") {
+                    return layer.msg('上传失败,' + res.msg);
+                }
+
+                $('#imgList').append('<div class="img-div" style="background: url(\'http://localhost:51076/api/ImgUpload?imgname=' + res.imgname + '\') no-repeat right bottom; background-size: cover;margin-right: 4px;float:left;cursor:pointer;" background="' + res.imgname + '"><img alt="" class="background-img"> </div>');
+                //绑定class=img-div的click事件
+                $('.img-div').click(function () {
+                    $('.img-div').children().filter('img').removeAttr("src");
+                    $('.img-div').removeAttr("currentBackground");
+                    $(this).children().filter('img').attr("src", "./common/img/current.png");
+                    $(this).attr("currentBackground", res.imgname);
+                });
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+
+
+
+
+
+        //监听基础设置提交
+        form.on('submit(BasicSettings)', function (data) {
+
+            return false;
+        });
+        //监听高级设置提交
+        form.on('submit(AdvancedSetting)', function (data) {
+            submit(data.field);
+            return false;
+        });
+        $('#toBack').click(() => {
+            window.location.href = "./index.html";
+        });
+    });
+
+
+
+</script>
+
+</html>
